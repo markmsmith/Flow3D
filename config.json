@@ -1,0 +1,12 @@
+{
+    "name": "LookbackDefectsByPriority",
+    "className": "CustomApp",
+    "sdk": "2.0p3",
+    "javascript": [
+        "three.js"
+        "App.js"
+    ],
+    "css": [
+        "app.css"
+    ]
+}
