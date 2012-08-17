@@ -2,15 +2,16 @@ Ext.define('CustomApp', {
     extend: 'Rally.app.App',
     componentCls: 'app',
     layout: {
-        type: 'vbox',
-        align: 'stretch'
+        type: 'vbox'
+        //align: 'stretch'
     },
     items:[
         {
-            xtype: 'panel',
+            xtype: 'component',
             itemId: 'holder',
-            layout: 'fit',
-            height: 350,
+            autoEl: 'canvas',
+            width: 400,
+            height: 300,
             margin: '0 0 200 0'
         }
     ],
@@ -89,11 +90,13 @@ Ext.define('CustomApp', {
             FAR = 10000;
 
         // get the DOM element to attach to
-        var holder = this.down('#holder').getEl();
+        var holder = this.down('#holder').getEl().dom;
 
         // create a WebGL renderer, camera
         // and a scene
-        var renderer = new THREE.WebGLRenderer();
+        var renderer = new THREE.WebGLRenderer({
+            canvas: holder
+        });
         var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
                                         ASPECT,
                                         NEAR,
@@ -107,7 +110,7 @@ Ext.define('CustomApp', {
         renderer.setSize(WIDTH, HEIGHT);
 
         // attach the render-supplied DOM element
-        holder.appendChild(renderer.domElement);
+        //holder.appendChild(renderer.domElement);
 
         // create the sphere's material
         var sphereMaterial = new THREE.MeshLambertMaterial(
