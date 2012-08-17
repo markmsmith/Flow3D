@@ -69,7 +69,30 @@ Ext.define('CustomApp', {
                     load: this.onStoreLoad,
                     scope: this
                 }
-        });       
+        });
+
+        this.loadModel();
+    },
+
+    loadModel: function(){
+
+        Ext.Ajax.request({
+            url: './resources/heart_with_normals.obj',
+            callback: function(opts, success, response) {
+                if(success || response.status === 0){
+                    this.parseModelFromObj(response.responseText);
+                }
+                else{
+                    console.log('server-side failure with status code ' + response.status);
+                }
+            },
+            scope: this
+        });
+
+    },
+
+    parseModelFromObj: function(objFileText){
+        console.log(objFileText);
     },
 
     onStoreLoad: function(store, records){
