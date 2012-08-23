@@ -3,7 +3,8 @@
     "className": "CustomApp",
     "sdk": "2.0p3",
     "javascript": [
-        "three.js"
+        "three.js",
+        "ColladaLoader.js",
         "App.js"
     ],
     "css": [
